@@ -16,6 +16,8 @@ import * as auth from '../services/auth'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 import TicketsSold from '../components/tsp/TicketsSold.vue'
+import PassengerDashboard from '../components/passenger/PassengerDashboard.vue'
+import TrainSchedules from '../components/passenger/TrainSchedules.vue'
 
 NProgress.configure({ easing: 'ease', speed: 1000 })
 
@@ -95,6 +97,16 @@ const routes = [
     path: '/tsp/soldtickets',
     name: 'TicketsSold',
     component: TicketsSold
+  },
+  {
+    path: '/user/dashboard',
+    name: 'PassengerDashboard',
+    component: PassengerDashboard
+  },
+  {
+    path: '/user/schedule',
+    name: 'TrainSchedules',
+    component: TrainSchedules
   },
   {
     path: '/about',

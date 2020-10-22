@@ -7,68 +7,29 @@
           <router-link to="/tsp/soldtickets">View Sold ticket</router-link>
         </div>
         <div>
-          <button v-b-modal.addTicketsSold>
-            <i class="fa fa-plus" aria-hidden="true"></i> New
-          </button>
+          <b-form-datepicker
+          id="datepicker"
+          today-button
+          reset-button
+          close-button
+          placeholder="All Date"
+          v-model="value"
+          class="mb-1 date"
+          :date-format-options="{
+            year:'numeric',
+            month:'numeric',
+            day:'numeric'
+            }"
+          ></b-form-datepicker>
+                <b-form-select
+                  class="schedule"
+                  v-model="selected"
+                  :options="schedule"
+                ></b-form-select>
         </div>
         <div class="table">
           <b-table striped hover :items="items"></b-table>
         </div>
-        <b-modal id="addTicketsSold" title="Create Sold ticket">
-          <div id="modal" class="">
-            <b-form class="form" @submit="onSubmit" @reset="onReset">
-              <b-form-group id="input-from">
-                <b-form-select
-                  v-model="selected"
-                  :options="from"
-                ></b-form-select>
-              </b-form-group>
-              <b-form-group id="input-to">
-                <b-form-select
-                  v-model="selected"
-                  :options="to"
-                ></b-form-select>
-              </b-form-group>
-              <b-form-group id="input-carrier">
-                <b-form-select
-                  v-model="selected"
-                  :options="carrier"
-                ></b-form-select>
-              </b-form-group>
-              <b-form-group id="input-departurTime" label="Departur Time">
-                <input
-                  class="input"
-                  id="input-departurTime"
-                  v-model="form.departurTime"
-                  type="time"
-                  required
-                  placeholder="Enter Station name"
-                />
-              </b-form-group>
-              <b-form-group id="input-arrivalTime" label="Arrival Time">
-                <input
-                  class="input"
-                  id="input-arrivalTime"
-                  v-model="form.arrivalTime"
-                  type="time"
-                  required
-                  placeholder="Enter Station State"
-                />
-              </b-form-group>
-              <b-form-group id="input-cost">
-                <input
-                  class="input"
-                  id="input-cost"
-                  v-model="form.cost"
-                  type="number"
-                  required
-                  placeholder="Enter cost Naira"
-                />
-              </b-form-group>
-              <button type="submit" class="button">Add</button>
-            </b-form>
-          </div>
-        </b-modal>
       </div>
     </DashboardLayout>
   </div>
@@ -85,6 +46,7 @@ export default {
     return {
       items: [
         {
+          ticket_number: '191020C354001',
           from: 'Rigassa station, Kaduna',
           to: 'Abuja Station',
           departur_time: '7:30 AM',
@@ -93,21 +55,11 @@ export default {
           cost: 'N2500'
         }
       ],
-      selected: null,
-      from: [
-        { value: null, text: 'Please select a station' },
-        { value: 'id', text: 'Kaduna' },
-        { value: 'id', text: 'Abuja' }
-      ],
-      to: [
-        { value: null, text: 'Please select a destination' },
-        { value: 'id', text: 'Kaduna' },
-        { value: 'id', text: 'Abuja' }
-      ],
-      carrier: [
-        { value: null, text: 'Select a carrier' },
-        { value: 'id', text: 'C 354' },
-        { value: 'id', text: 'C 127' }
+      schedule: [
+        { value: null, text: 'All schedule' },
+        { value: 'id', text: '7:00 pm' },
+        { value: 'id', text: '2:00 pm' },
+        { value: 'id', text: '7:00 pm' }
       ],
       form: {
         email: '',

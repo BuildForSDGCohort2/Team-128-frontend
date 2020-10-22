@@ -41,6 +41,21 @@ background-repeat:no-repeat;
 .dashboardlink{
         left: 0;
         float: left;
+        margin-right: 50px !important;
+}
+.date{
+        width:12vw !important;
+        float: left;
+}
+.schedule{
+        width:12vw !important;
+        
+}
+.datel{
+        float: left;
+}
+.datepicker{
+        margin-left: 50px !important;
 }
 .form{
 width:100%;
